@@ -1273,12 +1273,15 @@
     }
 
     .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 3rem;
     }
 
     .team-member {
+      flex: 0 0 calc((100% - 6rem) / 3);
+      max-width: 100%;
       background: white;
       border-radius: 20px;
       overflow: hidden;
@@ -1334,6 +1337,11 @@
       font-size: 1.6rem;
       margin-bottom: 0.8rem;
       color: var(--text-primary);
+      /* keeps role badges aligned when a name wraps to two lines */
+      min-height: 2.45em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .role {
@@ -1385,6 +1393,106 @@
     .contact-info a.linkedin:hover {
       background: #0077b5;
       border-color: #0077b5;
+    }
+
+    /* ========== ADVISORY BOARD ========== */
+    .team-subhead {
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin: 5rem 0 2.5rem;
+    }
+
+    .advisors-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .advisor-card {
+      flex: 1 1 210px;
+      max-width: 250px;
+      background: white;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 2rem 1.25rem;
+      text-align: center;
+      transition: var(--transition-base);
+    }
+
+    .advisor-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+
+    .advisor-photo {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      border: 3px solid rgba(0, 208, 132, 0.25);
+    }
+
+    .advisor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .advisor-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .advisor-role {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .advisor-role strong {
+      display: block;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* 2x2 advisor grid on small screens instead of a long single column */
+    @media (max-width: 576px) {
+      .advisors-grid {
+        gap: 1rem;
+      }
+
+      .advisor-card {
+        flex: 0 0 calc((100% - 1rem) / 2);
+        max-width: none;
+        padding: 1.5rem 0.85rem;
+      }
+
+      .advisor-photo {
+        width: 104px;
+        height: 104px;
+        margin-bottom: 1rem;
+      }
+
+      .advisor-card h3 {
+        font-size: 0.98rem;
+      }
+
+      .advisor-role {
+        font-size: 0.82rem;
+      }
     }
 
     /* ========== FOOTER ========== */
@@ -1518,6 +1626,10 @@
         border-right: none !important;
         border-top: none !important;
       }
+
+      .team-member {
+        flex-basis: calc((100% - 3rem) / 2);
+      }
     }
 
     @media (max-width: 768px) {
@@ -1574,9 +1686,16 @@
       .about-grid,
       .vision-grid,
       .problem-grid,
-      .solution-content,
-      .team-grid {
+      .solution-content {
         grid-template-columns: 1fr;
+      }
+
+      .team-member {
+        flex-basis: 100%;
+      }
+
+      .member-info h3 {
+        min-height: 0;
       }
 
       .content-block,
@@ -2166,6 +2285,69 @@
               <a href="https://www.linkedin.com/in/ankitjsingh" class="linkedin" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
             </div>
           </div>
+        </div>
+
+        <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+          <div class="member-image">
+            <img src="assets/img/keerthana.jpg" alt="Keerthana Sundara Ganesan">
+          </div>
+          <div class="member-info">
+            <h3>Keerthana Sundara Ganesan</h3>
+            <span class="role">Head of Technology</span>
+            <p class="education">M.Sc. Applied Chemistry, Anna University &middot; 2 yrs at IIT Madras &middot; Deployed a 50 kW Zn-air battery</p>
+            <div class="contact-info">
+              <a href="mailto:team@protoncraftinnovations.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-member" data-aos="fade-up" data-aos-delay="500">
+          <div class="member-image">
+            <img src="assets/img/santosh.jpg" alt="Dr. Santosh Semwal">
+          </div>
+          <div class="member-info">
+            <h3>Dr. Santosh Semwal</h3>
+            <span class="role">R&amp;D Head</span>
+            <p class="education">PhD Chemistry, IIT Bhubaneswar &middot; Energy storage specialist &middot; Pioneer in H₂S electrolysis in India</p>
+            <div class="contact-info">
+              <a href="mailto:team@protoncraftinnovations.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="team-subhead" data-aos="fade-up">Advisory Board</p>
+      <div class="advisors-grid">
+        <div class="advisor-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="advisor-photo">
+            <img src="assets/img/advisors/ajay-popat.webp" alt="Ajay Popat" loading="lazy">
+          </div>
+          <h3>Ajay Popat</h3>
+          <p class="advisor-role"><strong>Former President</strong>Ion Exchange</p>
+        </div>
+
+        <div class="advisor-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="advisor-photo">
+            <img src="assets/img/advisors/sanjay-bhargava.webp" alt="Dr. Sanjay Bhargava" loading="lazy">
+          </div>
+          <h3>Dr. Sanjay Bhargava</h3>
+          <p class="advisor-role"><strong>Ex-Executive Director</strong>Bharat Petroleum</p>
+        </div>
+
+        <div class="advisor-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="advisor-photo">
+            <img src="assets/img/advisors/robin-george.webp" alt="Robin George" loading="lazy">
+          </div>
+          <h3>Robin George</h3>
+          <p class="advisor-role"><strong>Divisional Head</strong>Musashi</p>
+        </div>
+
+        <div class="advisor-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="advisor-photo">
+            <img src="assets/img/advisors/surojit-bose.webp" alt="Surojit Bose" loading="lazy">
+          </div>
+          <h3>Surojit Bose</h3>
+          <p class="advisor-role"><strong>Founding Partner</strong>Climate9ers</p>
         </div>
       </div>
     </div>
